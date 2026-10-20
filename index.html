@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Morales Group | South Jersey &amp; Philadelphia Realtors</title>
+<meta name="description" content="Helping buyers, sellers, investors, and relocating families throughout Cherry Hill, South Jersey, and Center City Philadelphia. The Morales Group, Keller Williams Realty.">
+<meta property="og:title" content="The Morales Group | South Jersey &amp; Philadelphia Realtors">
+<meta property="og:description" content="Helping buyers, sellers, investors, and relocating families throughout Cherry Hill, South Jersey, and Center City Philadelphia. The Morales Group, Keller Williams Realty.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sjpahomes2go.com/">
+<link rel="canonical" href="https://sjpahomes2go.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: full-bleed photo hero bridging PA and NJ, then alternating light/ink bands; content column 1180px */
+:root{
+  --bg:#f6f7f8; --surface:#ffffff; --ink:#132836; --fg:#1c2a33; --muted:#5a6b76;
+  --line:#dde3e7; --accent:#a8732a; --accent-ink:#ffffff; --band:#132836; --band-fg:#eef2f4; --band-muted:#a9b9c3;
+  --hero-1:#1d3b4d; --hero-2:#0e1f2a;
+  --display:"Libre Caslon Display", Georgia, "Times New Roman", serif;
+  --body:"Libre Franklin", "Segoe UI", Helvetica, Arial, sans-serif;
+  --wrap:1180px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e171d; --surface:#15222b; --ink:#e7edf0; --fg:#dbe3e7; --muted:#9aabb5;
+  --line:#26363f; --accent:#d4a159; --accent-ink:#17110a; --band:#0a1217; --band-fg:#e7edf0; --band-muted:#8fa2ad;
+  --hero-1:#16303f; --hero-2:#081118; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e171d; --surface:#15222b; --ink:#e7edf0; --fg:#dbe3e7; --muted:#9aabb5;
+  --line:#26363f; --accent:#d4a159; --accent-ink:#17110a; --band:#0a1217; --band-fg:#e7edf0; --band-muted:#8fa2ad;
+  --hero-1:#16303f; --hero-2:#081118; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16.5px;line-height:1.65;margin:0}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;color:var(--ink);line-height:1.12;text-wrap:balance;margin:0}
+h2{font-size:clamp(2rem,4vw,2.9rem)}
+h3{font-size:1.6rem}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.section{padding-block:88px}
+.section-head{display:grid;gap:14px;max-width:62ch;margin-bottom:44px}
+.section-head p{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:14px 22px;font:600 .95rem var(--body);text-decoration:none;border:1.5px solid transparent;border-radius:2px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-ghost{border-color:currentColor;color:inherit;background:transparent}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+a:focus-visible,.btn:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* Header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--surface);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
+.brand{display:flex;flex-direction:column;text-decoration:none;line-height:1.1}
+.brand b{font-family:var(--display);font-weight:400;font-size:1.45rem;color:var(--ink)}
+.brand span{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:26px;list-style:none;margin:0;padding:0;font-size:.92rem;font-weight:500}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{display:flex;align-items:center;gap:16px}
+.nav-phone{font-weight:600;font-size:.92rem;text-decoration:none;font-variant-numeric:tabular-nums;white-space:nowrap}
+.menu{display:none}
+@media (max-width:980px){
+  .nav-links,.nav-phone{display:none}
+  .menu{display:block;position:relative}
+  .menu summary{list-style:none;cursor:pointer;padding:10px 14px;border:1px solid var(--line);font-weight:600;font-size:.9rem}
+  .menu summary::-webkit-details-marker{display:none}
+  .menu ul{position:absolute;right:0;top:calc(100% + 8px);background:var(--surface);border:1px solid var(--line);list-style:none;margin:0;padding:8px 0;min-width:200px;box-shadow:0 12px 30px rgba(0,0,0,.15)}
+  .menu li a{display:block;padding:10px 18px;text-decoration:none}
+}
+@media (max-width:520px){.nav-cta .btn{display:none}}
+
+/* Hero */
+.hero{position:relative;color:#fff;background:linear-gradient(160deg,var(--hero-1),var(--hero-2));overflow:hidden}
+.hero-photo{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.55}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,20,28,.88) 0%,rgba(9,20,28,.55) 55%,rgba(9,20,28,.25) 100%)}
+.hero .wrap{position:relative;z-index:1;padding-block:96px 72px;display:grid;gap:28px}
+.hero h1{color:#fff;font-size:clamp(2.4rem,6vw,4.4rem);max-width:16ch}
+.hero .lede{max-width:56ch;font-size:1.1rem;color:#dfe7ec}
+.hero .eyebrow{color:#e2b878}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.bridge{display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:14px;max-width:620px;margin-top:20px;color:#cfdbe2;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
+.bridge svg{width:100%;height:auto;display:block}
+.bridge span{padding-bottom:4px}
+
+/* Quick actions */
+.quick{background:var(--surface);border-bottom:1px solid var(--line)}
+.quick .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+.quick a{display:grid;gap:4px;padding:26px 24px;text-decoration:none;border-left:1px solid var(--line)}
+.quick a:last-child{border-right:1px solid var(--line)}
+.quick a strong{font-family:var(--display);font-weight:400;font-size:1.35rem;color:var(--ink)}
+.quick a small{color:var(--muted);font-size:.9rem}
+.quick a:hover strong{color:var(--accent)}
+@media (max-width:760px){.quick .wrap{grid-template-columns:1fr}.quick a{border-left:0;border-right:0!important;border-bottom:1px solid var(--line)}.quick a:last-child{border-bottom:0}}
+
+/* Services */
+.services{display:grid;gap:72px}
+.service{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.service:nth-child(even) .service-media{order:2}
+.service-media{aspect-ratio:4/3;max-width:100%;background:linear-gradient(150deg,var(--hero-1),var(--hero-2));background-size:cover;background-position:center;position:relative}
+.service-media .tag{position:absolute;left:0;bottom:0;background:var(--accent);color:var(--accent-ink);padding:8px 14px;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.service-body{display:grid;gap:16px;min-width:0}
+.service-body p{color:var(--muted)}
+.checklist{list-style:none;margin:6px 0 4px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;font-size:.95rem}
+.checklist li{padding-left:22px;position:relative}
+.checklist li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--accent)}
+.service-body .btn{justify-self:start}
+@media (max-width:860px){.service{grid-template-columns:1fr;gap:28px}.service:nth-child(even) .service-media{order:0}}
+@media (max-width:440px){.checklist{grid-template-columns:1fr}}
+
+/* Areas band */
+.band{background:var(--band);color:var(--band-fg)}
+.band h2,.band h3{color:var(--band-fg)}
+.band .section-head p{color:var(--band-muted)}
+.areas{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,255,255,.14)}
+.area{padding:26px 20px 6px 0;display:grid;gap:6px;min-width:0}
+.area .state{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--band-muted)}
+.area h3{font-size:1.35rem}
+.area p{color:var(--band-muted);font-size:.92rem}
+@media (max-width:980px){.areas{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.areas{grid-template-columns:1fr}}
+
+/* Why */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.why div{background:var(--surface);padding:26px 22px;display:grid;gap:8px;align-content:start}
+.why h3{font-size:1.2rem}
+.why p{color:var(--muted);font-size:.93rem}
+@media (max-width:900px){.why{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.why{grid-template-columns:1fr}}
+
+/* About + video */
+.about{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.about-body{display:grid;gap:18px;min-width:0}
+.about-body p{color:var(--muted)}
+.video{display:grid;place-items:center;aspect-ratio:16/9;max-width:100%;background:linear-gradient(150deg,var(--hero-1),var(--hero-2));background-size:cover;background-position:center;color:#fff;text-decoration:none;position:relative}
+.video .play{display:grid;place-items:center;width:78px;height:78px;border-radius:50%;background:var(--accent);color:var(--accent-ink);transition:transform .2s}
+.video:hover .play{transform:scale(1.06)}
+.video small{position:absolute;bottom:14px;left:16px;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
+.quote{font-family:var(--display);font-size:1.35rem;color:var(--ink);border-left:2px solid var(--accent);padding-left:18px}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+
+/* Reviews */
+.reviews{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+.review{background:var(--surface);border:1px solid var(--line);padding:28px;display:grid;gap:16px;align-content:space-between}
+.stars{color:var(--accent);letter-spacing:3px;font-size:1rem}
+.review p{font-size:.97rem}
+.review cite{font-style:normal;font-weight:600;font-size:.9rem}
+.review.feature{grid-column:span 2}
+.review.feature p{font-family:var(--display);font-size:1.3rem;line-height:1.45;color:var(--ink)}
+@media (max-width:720px){.review.feature{grid-column:auto}.reviews{grid-template-columns:1fr}}
+
+/* Living */
+.living{display:grid;grid-template-columns:1fr 1.4fr;gap:56px}
+.living-body{display:grid;gap:16px;color:var(--muted);min-width:0}
+@media (max-width:860px){.living{grid-template-columns:1fr;gap:24px}}
+
+/* FAQ */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+.faq details{border-top:1px solid var(--line);padding:18px 0}
+.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--accent);font-size:1.3rem;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--muted);margin-top:10px}
+@media (max-width:760px){.faq{grid-template-columns:1fr}}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1fr 1.15fr;gap:56px}
+.contact-info{display:grid;gap:22px;align-content:start}
+.contact-info p{color:var(--band-muted)}
+.contact-lines{display:grid;gap:10px;font-size:1.05rem}
+.contact-lines a{text-decoration:none;font-weight:600}
+.contact-lines a:hover{color:#e2b878}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:grid;gap:6px;font-size:.82rem;font-weight:600;letter-spacing:.04em;color:var(--band-muted)}
+input,textarea,select{font:inherit;font-size:1rem;padding:13px 14px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:var(--band-fg);border-radius:2px;width:100%}
+select option{color:#132836}
+textarea{min-height:130px;resize:vertical}
+.full{grid-column:1/-1}
+.form-note{font-size:.9rem;color:#e2b878;min-height:1.4em}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+@media (max-width:480px){form{grid-template-columns:1fr}}
+
+/* Footer */
+footer{background:var(--band);color:var(--band-muted);border-top:1px solid rgba(255,255,255,.1);font-size:.88rem}
+footer .wrap{padding-block:32px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px}
+footer b{color:var(--band-fg);font-weight:600}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#top"><b>The Morales Group</b><span>Keller Williams Realty</span></a>
+    <ul class="nav-links">
+      <li><a href="#sell">Sell</a></li>
+      <li><a href="#buy">Buy</a></li>
+      <li><a href="#invest">Invest</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+18562640332">(856) 264-0332</a>
+      <a class="btn btn-primary" href="https://cal.com/themoralesgroup/intromeeting" target="_blank" rel="noopener">Book a call</a>
+      <details class="menu">
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="#sell">Sell</a></li>
+          <li><a href="#buy">Buy</a></li>
+          <li><a href="#invest">Invest</a></li>
+          <li><a href="#areas">Areas</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-photo" style="background-image:url('https://images.unsplash.com/photo-1512699355324-f07e3106dae5?w=1800&q=80&auto=format&fit=crop')"></div>
+  <div class="wrap">
+    <p class="eyebrow">South Jersey &amp; Philadelphia Realtors</p>
+    <h1>Your trusted New Jersey &amp; Philadelphia real estate expert</h1>
+    <p class="lede">Helping buyers, sellers, investors, and relocating families reach their real estate goals from Cherry Hill to Center City, with local market knowledge and personalized service.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://raulmorales.kw.com/search/" target="_blank" rel="noopener">Search homes</a>
+      <a class="btn btn-ghost" href="https://raulmorales.kw.com/discover-your-homes-worth" target="_blank" rel="noopener">What's my home worth?</a>
+    </div>
+    <div class="bridge" aria-label="Serving both sides of the Delaware River">
+      <span>Center City, PA</span>
+      <svg viewBox="0 0 400 60" fill="none" aria-hidden="true">
+        <path d="M0 50 H400" stroke="currentColor" stroke-width="2"/>
+        <path d="M110 50 V8 M290 50 V8" stroke="currentColor" stroke-width="3"/>
+        <path d="M0 40 Q55 44 110 8 Q200 58 290 8 Q345 44 400 40" stroke="#e2b878" stroke-width="1.8"/>
+        <path d="M30 50V42 M60 50V36 M85 50V24 M135 50V22 M160 50V33 M185 50V40 M215 50V40 M240 50V33 M265 50V22 M315 50V24 M340 50V36 M370 50V42" stroke="currentColor" stroke-width=".8" opacity=".6"/>
+      </svg>
+      <span>Cherry Hill, NJ</span>
+    </div>
+  </div>
+</section>
+
+<nav class="quick" aria-label="Quick actions">
+  <div class="wrap">
+    <a href="https://raulmorales.kw.com/discover-your-homes-worth" target="_blank" rel="noopener"><strong>Get a home valuation</strong><small>A free estimate of what your home is worth</small></a>
+    <a href="https://raulmorales.kw.com/search/" target="_blank" rel="noopener"><strong>Search listings</strong><small>Homes for sale in NJ and Philadelphia</small></a>
+    <a href="https://cal.com/themoralesgroup/investor-call" target="_blank" rel="noopener"><strong>Talk investments</strong><small>Book an investor strategy call</small></a>
+  </div>
+</nav>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">How we help</p>
+      <h2>Real estate services for every kind of move</h2>
+    </div>
+    <div class="services">
+      <article class="service" id="sell">
+        <div class="service-media" style="background-image:url('https://images.unsplash.com/photo-1626178793926-22b28830aa30?w=1200&q=80&auto=format&fit=crop')"><span class="tag">Home sellers</span></div>
+        <div class="service-body">
+          <h3>Sell for top value, with less time on market</h3>
+          <p>Selling a home takes more than a sign in the yard. Every listing gets professional photography, MLS optimization, social media promotion, and targeted digital advertising. We price from recent comparable sales and neighborhood conditions, then manage every detail from listing prep through settlement.</p>
+          <ul class="checklist">
+            <li>Home valuation</li><li>Pricing strategy</li><li>Professional photography</li><li>Digital marketing</li>
+            <li>MLS optimization</li><li>Buyer screening</li><li>Contract negotiation</li><li>Transaction management</li>
+          </ul>
+          <a class="btn btn-primary" href="https://raulmorales.kw.com/discover-your-homes-worth" target="_blank" rel="noopener">Get my home valuation</a>
+        </div>
+      </article>
+      <article class="service" id="buy">
+        <div class="service-media" style="background-image:url('https://images.unsplash.com/photo-1505843513577-22bb7d21e455?w=1200&q=80&auto=format&fit=crop')"><span class="tag">Home buyers</span></div>
+        <div class="service-body">
+          <h3>Find the right home at the right price</h3>
+          <p>We simplify buying for first-time buyers, move-up buyers, downsizers, and relocating families. Expect personalized searches, neighborhood guidance, financing referrals, offer strategy, inspections, and closing coordination, with an advocate on your side from the first consultation to closing day.</p>
+          <ul class="checklist">
+            <li>Personalized home search</li><li>Market education</li><li>Neighborhood expertise</li><li>Financing guidance</li>
+            <li>Contract negotiation</li><li>Inspection support</li><li>Closing coordination</li>
+          </ul>
+          <a class="btn btn-primary" href="https://raulmorales.kw.com/search/" target="_blank" rel="noopener">Start my search</a>
+        </div>
+      </article>
+      <article class="service" id="invest">
+        <div class="service-media" style="background-image:url('https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=1200&q=80&auto=format&fit=crop')"><span class="tag">Investors</span></div>
+        <div class="service-body">
+          <h3>Build wealth with data-driven investing</h3>
+          <p>We analyze market trends, rental demand, appreciation potential, and return on investment across South Jersey and Philadelphia. That covers rentals, multifamily, fix-and-flip projects, and long-term holds.</p>
+          <ul class="checklist">
+            <li>Investment property analysis</li><li>Cash flow evaluation</li><li>Market trend research</li><li>Rental opportunities</li>
+            <li>Fix-and-flip identification</li><li>Acquisition support</li><li>Exit strategy planning</li>
+          </ul>
+          <a class="btn btn-primary" href="https://cal.com/themoralesgroup/investor-call" target="_blank" rel="noopener">Schedule an investor call</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section band" id="areas">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Where we work</p>
+      <h2>Both sides of the Delaware</h2>
+      <p>We serve all of New Jersey and Philadelphia County, with deep knowledge of these communities.</p>
+    </div>
+    <div class="areas">
+      <div class="area"><span class="state">New Jersey</span><h3>Cherry Hill</h3><p>Shopping, parks, well-regarded schools, and a quick commute to Center City.</p></div>
+      <div class="area"><span class="state">New Jersey</span><h3>Camden County</h3><p>Established suburbs with regional rail and highway access.</p></div>
+      <div class="area"><span class="state">New Jersey</span><h3>Gloucester County</h3><p>Starter homes to new construction, often at strong value.</p></div>
+      <div class="area"><span class="state">New Jersey</span><h3>Burlington County</h3><p>Historic towns, townhomes, and room to grow.</p></div>
+      <div class="area"><span class="state">Pennsylvania</span><h3>Philadelphia</h3><p>Center City condos, rowhomes, and investment properties.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Why choose us</p>
+      <h2>What working with The Morales Group looks like</h2>
+    </div>
+    <div class="why">
+      <div><h3>Local market expertise</h3><p>Deep knowledge of Cherry Hill, Camden, Gloucester, and Burlington Counties, and Philadelphia neighborhoods.</p></div>
+      <div><h3>Personalized service</h3><p>Every client receives a customized strategy.</p></div>
+      <div><h3>Exceptional communication</h3><p>Consistent updates and responsive service.</p></div>
+      <div><h3>Strong negotiation</h3><p>Focused on protecting your interests and maximizing value.</p></div>
+      <div><h3>Client-first philosophy</h3><p>Your goals drive every recommendation.</p></div>
+      <div><h3>Advanced technology</h3><p>Modern tools for marketing, communication, and market analysis.</p></div>
+      <div><h3>Transparent process</h3><p>Clear expectations and honest guidance throughout.</p></div>
+      <div><h3>Proven systems</h3><p>Structured processes that reduce stress and improve outcomes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap about">
+    <div class="about-body">
+      <p class="eyebrow">Meet your Realtor</p>
+      <h2>Raul Morales, REALTOR®</h2>
+      <p>The Morales Group, led by Raul Morales, guides clients through buying, selling, and investing in homes across Pennsylvania and New Jersey. Expect personalized service, expert market insight, and strategies built around your goals.</p>
+      <p class="quote">"The future depends on what you do today." <br><small style="font-family:var(--body);font-size:.85rem;color:var(--muted)">Mahatma Gandhi</small></p>
+      <a class="btn btn-primary" style="justify-self:start" href="https://cal.com/themoralesgroup/intromeeting" target="_blank" rel="noopener">Schedule a consultation</a>
+    </div>
+    <a class="video" href="https://www.youtube.com/watch?v=fZumsf98IpI" target="_blank" rel="noopener" style="background-image:url('https://img.youtube.com/vi/fZumsf98IpI/hqdefault.jpg')">
+      <span class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <small>Watch on YouTube</small>
+    </a>
+  </div>
+</section>
+
+<section class="section band" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Client reviews</p>
+      <h2>What clients say about working with Raul</h2>
+    </div>
+    <div class="reviews">
+      <figure class="review feature" style="margin:0;background:transparent;border-color:rgba(255,255,255,.15)">
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <p style="color:var(--band-fg)">"From the very beginning, he listened closely to what we were looking for and never stopped working to make sure we found the perfect fit. We had some picky preferences (historic home with charm in a walkable town). Thanks to Raul's hard work and guidance, we found our dream home, something we didn't think was possible until he made it happen."</p>
+        <cite style="color:var(--band-fg)">Marie Malony</cite>
+      </figure>
+      <figure class="review" style="margin:0"><div class="stars" aria-label="5 stars">★★★★★</div><p>"He was patient, responsive, and always made himself available when I wanted to see a property. He made the entire process feel comfortable and never pressured me. Thanks to Raul, I found a home that I'm truly happy with."</p><cite>Evelyn Rivera</cite></figure>
+      <figure class="review" style="margin:0"><div class="stars" aria-label="5 stars">★★★★★</div><p>"Not only is he knowledgeable and pleasant, but he looks out for your best interest in every single part of the process. I felt as if I was working with one of my close friends, or dare I say, family."</p><cite>Art Mikhelson</cite></figure>
+      <figure class="review" style="margin:0"><div class="stars" aria-label="5 stars">★★★★★</div><p>"He stayed on top of every listing and negotiated a great deal for us once we found the home we wanted, and he helped us beat out other buyers to obtain our first home!"</p><cite>Sergio Morales</cite></figure>
+      <figure class="review" style="margin:0"><div class="stars" aria-label="5 stars">★★★★★</div><p>"Raul Morales will make sure to walk you through the home buying process with his knowledge of real estate and with extreme patience. He always returned my phone calls in a timely manner."</p><cite>Korpo Brown</cite></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap living">
+    <div class="section-head" style="margin:0">
+      <p class="eyebrow">Community guide</p>
+      <h2>Living in South Jersey</h2>
+    </div>
+    <div class="living-body">
+      <p>South Jersey combines suburban comfort, excellent schools, convenient commuting, and access to world-class amenities. Camden, Gloucester, and Burlington Counties keep attracting buyers looking for affordability, quality of life, and proximity to both Philadelphia and the Jersey Shore.</p>
+      <p>Cherry Hill remains one of the region's most desirable communities thanks to its shopping, dining, parks, healthcare, and transportation access. Families value its schools, and professionals enjoy an easy trip into Center City.</p>
+      <p>From starter homes and townhouses to luxury and investment properties, the market here fits a wide range of lifestyles and budgets. Whether you're searching in Gloucester, Camden, or Burlington County or in Philadelphia, a local expert helps you spot the right opportunities.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div class="faq">
+      <div>
+        <details><summary>How do I buy a home in New Jersey?</summary><p>Start by getting mortgage pre-approval, defining your budget, and partnering with an experienced Realtor.</p></details>
+        <details><summary>What credit score do I need?</summary><p>Many loan programs accept scores starting around 620, though requirements vary.</p></details>
+        <details><summary>How much are closing costs in NJ?</summary><p>Typically 2%–5% of the purchase price.</p></details>
+        <details><summary>How much is my home worth?</summary><p>A professional market analysis gives an accurate estimate. <a href="https://raulmorales.kw.com/discover-your-homes-worth" target="_blank" rel="noopener">Get your free valuation</a>.</p></details>
+        <details><summary>Should I get pre-approved before house hunting?</summary><p>Yes. Pre-approval strengthens your purchasing position.</p></details>
+        <details><summary>How much do I need for a down payment?</summary><p>Some programs allow down payments as low as 3%.</p></details>
+        <details><summary>How long does it take to buy a home?</summary><p>Most transactions take 30–60 days after contract acceptance.</p></details>
+        <details><summary>What are property taxes like in New Jersey?</summary><p>Taxes vary significantly by municipality and property value.</p></details>
+        <details><summary>What is earnest money?</summary><p>A deposit that shows a buyer's commitment.</p></details>
+        <details><summary>Do I need a home inspection?</summary><p>It's strongly recommended for most transactions.</p></details>
+      </div>
+      <div>
+        <details><summary>Is now a good time to sell my home?</summary><p>Market conditions vary, but low inventory often creates strong opportunities for sellers.</p></details>
+        <details><summary>How long does it take to sell a home?</summary><p>It depends on pricing, condition, and market demand.</p></details>
+        <details><summary>Can I buy and sell at the same time?</summary><p>Yes, with proper planning and strategy.</p></details>
+        <details><summary>How do multiple-offer situations work?</summary><p>Buyers submit competing offers, and sellers choose the strongest terms.</p></details>
+        <details><summary>What is a comparative market analysis?</summary><p>A valuation report based on recent comparable sales.</p></details>
+        <details><summary>Can investors buy residential properties?</summary><p>Yes. Many investors buy single-family and multifamily homes.</p></details>
+        <details><summary>What does a Realtor do?</summary><p>A Realtor guides buyers and sellers through the entire transaction.</p></details>
+        <details><summary>What areas do you serve?</summary><p>All of New Jersey and Philadelphia County.</p></details>
+        <details><summary>How do I relocate to New Jersey?</summary><p>Work with a local expert who knows the schools, neighborhoods, and commuting patterns.</p></details>
+        <details><summary>Why work with The Morales Group?</summary><p>Local expertise, personalized service, and commitment to results.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section band" id="contact">
+  <div class="wrap contact">
+    <div class="contact-info">
+      <p class="eyebrow">Contact</p>
+      <h2>Let's make your next move a success</h2>
+      <p>Whether you're buying your first home, selling your current property, or exploring investments, we're here to help.</p>
+      <div class="contact-lines">
+        <a href="mailto:RaulMorales@KW.com">RaulMorales@KW.com</a>
+        <a href="tel:+18562640332">(856) 264-0332</a>
+      </div>
+      <a class="btn btn-ghost" style="justify-self:start" href="https://cal.com/themoralesgroup" target="_blank" rel="noopener">See all booking times</a>
+    </div>
+    <!-- To receive messages: create a free form at formspree.io and replace YOUR_FORM_ID below -->
+    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <label for="f-name">Name *<input id="f-name" name="name" required autocomplete="name"></label>
+      <label for="f-email">Email *<input id="f-email" name="email" type="email" required autocomplete="email"></label>
+      <label for="f-phone">Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel"></label>
+      <label for="f-topic">I'm interested in
+        <select id="f-topic" name="topic"><option>Buying</option><option>Selling</option><option>Investing</option><option>Relocating</option><option>Something else</option></select>
+      </label>
+      <label class="full" for="f-msg">Message *<textarea id="f-msg" name="message" required></textarea></label>
+      <div class="full" style="display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+        <button class="btn btn-primary" type="submit">Send message</button>
+        <p class="form-note" id="form-note" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><b>The Morales Group</b> · Affiliated with Keller Williams Realty</span>
+    <span>© 2026 The Morales Group · Equal Housing Opportunity</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', function (e) {
+  if (this.action.indexOf('YOUR_FORM_ID') !== -1) {
+    e.preventDefault();
+    document.getElementById('form-note').textContent = 'This form isn’t connected yet. Please email RaulMorales@KW.com or call (856) 264-0332.';
+  }
+});
+document.querySelectorAll('.menu a').forEach(function (a) {
+  a.addEventListener('click', function () { a.closest('details').open = false; });
+});
+</script>
+</body>
+</html>
