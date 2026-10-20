@@ -1,14 +1,24 @@
 # sjpahomes2go.com
 
-Website for The Morales Group (Keller Williams Realty), hosted on GitHub Pages from the `/docs` folder of the `main` branch.
+Website for The Morales Group (Raul Morales, Keller Williams Realty), hosted on GitHub Pages from the `/docs` folder of the `main` branch.
 
-The site lives in `docs/`: `index.html`, `images/`, and `CNAME`.
+## How it is built
+- `src/pages/` holds each page's content (`index.html`, `privacy.html`, `404.html`).
+- `tools/build.py` wraps them in the shared header, footer, SEO tags and structured data, inlines the coverage map, and writes `docs/` plus `sitemap.xml`, `robots.txt` and `site.webmanifest`.
+- `docs/assets/site.css` and `docs/assets/site.js` are edited directly. `docs/images/` holds the logo, icons and headshot.
+- `tools/mkmap.py` regenerates `docs/assets/coverage-map.svg` from US county shapes (`npm i us-atlas@3.0.1`).
+
+After editing anything in `src/pages/`, run `python3 tools/build.py` and commit `docs/`.
+
+## Settings in `docs/assets/site.js`
+- `formspreeId`: paste a free Formspree form ID to have the contact form email you directly. While it is empty, the form opens the visitor's email app with the message filled in.
+- `COUNTIES`: average property tax rates used by the calculators and the map. They are approximate county averages; check them yearly.
 
 ## Launch checklist
-- [x] Add the logo and headshot
-- [x] GitHub repo → Settings → Pages → deploy from `main` branch, `/docs` folder
-- [x] At Namecheap, A records for `@` → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153 and CNAME `www` → `rmoraleskw-stack.github.io`
-- [ ] Turn on "Enforce HTTPS" in Pages settings
-- [ ] Connect the contact form: create a free form at https://formspree.io and replace `YOUR_FORM_ID` in `docs/index.html`
-- [ ] Add the brokerage office address and phone (NJ advertising rules require the brokerage name and phone)
-- [ ] Replace stock photos with your own (put them in `docs/images/` and update the `url(...)` paths in `docs/index.html`)
+- [x] Logo and headshot
+- [x] GitHub Pages from `main` / `/docs`
+- [x] Namecheap DNS: four A records for `@` and CNAME `www` → `rmoraleskw-stack.github.io`
+- [ ] Enforce HTTPS in Pages settings
+- [ ] Formspree form ID (optional; the email fallback already works)
+- [ ] Brokerage office address and phone (NJ advertising rules)
+- [ ] Replace stock photos with your own
