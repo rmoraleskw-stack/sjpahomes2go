@@ -4,7 +4,7 @@ Website for The Morales Group (Keller Williams Realty), hosted on GitHub Pages.
 
 ## Before launch
 - [ ] Replace stock photos with your own (put them in an `images/` folder and update the `url(...)` paths in `index.html`)
-- [ ] Add the logo
+- [x] Add the logo and headshot
 - [ ] Connect the contact form: create a free form at https://formspree.io and replace `YOUR_FORM_ID` in `index.html`
 - [ ] Add the brokerage office address and phone (NJ advertising rules require the brokerage name and phone)
 - [ ] GitHub repo → Settings → Pages → deploy from `main` branch, root folder

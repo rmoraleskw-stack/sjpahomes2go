@@ -10,27 +10,36 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sjpahomes2go.com/">
 <link rel="canonical" href="https://sjpahomes2go.com/">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<meta property="og:image" content="https://sjpahomes2go.com/images/logo.png">
+<meta name="theme-color" content="#151514">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
 <style>
-/* Layout: full-bleed photo hero bridging PA and NJ, then alternating light/ink bands; content column 1180px */
+/* Layout: full-bleed photo hero bridging PA and NJ, then alternating light/black bands; brand colors from the TMG logo (black + gold) */
 :root{
-  --bg:#f6f7f8; --surface:#ffffff; --ink:#132836; --fg:#1c2a33; --muted:#5a6b76;
-  --line:#dde3e7; --accent:#a8732a; --accent-ink:#ffffff; --band:#132836; --band-fg:#eef2f4; --band-muted:#a9b9c3;
-  --hero-1:#1d3b4d; --hero-2:#0e1f2a;
+  --bg:#f7f7f5; --surface:#ffffff; --ink:#161616; --fg:#262522; --muted:#65625b;
+  --line:#e4e2dc; --accent:#b8892d; --accent-text:#8a6418; --accent-ink:#161616; --band:#151514; --band-fg:#f2eee6; --band-muted:#aba69c;
+  --hero-1:#2b2824; --hero-2:#0e0e0d;
   --display:"Libre Caslon Display", Georgia, "Times New Roman", serif;
   --body:"Libre Franklin", "Segoe UI", Helvetica, Arial, sans-serif;
   --wrap:1180px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0e171d; --surface:#15222b; --ink:#e7edf0; --fg:#dbe3e7; --muted:#9aabb5;
-  --line:#26363f; --accent:#d4a159; --accent-ink:#17110a; --band:#0a1217; --band-fg:#e7edf0; --band-muted:#8fa2ad;
-  --hero-1:#16303f; --hero-2:#081118; color-scheme:dark}}
+  --bg:#101010; --surface:#191918; --ink:#f2eee6; --fg:#e2ded6; --muted:#a39e94;
+  --line:#2c2b28; --accent:#d1a24a; --accent-text:#d9ae5c; --accent-ink:#141414; --band:#0a0a0a; --band-fg:#f2eee6; --band-muted:#9c978d;
+  --hero-1:#24211d; --hero-2:#080808; color-scheme:dark}
+  :root:not([data-theme="light"]) .only-light{display:none}
+  :root:not([data-theme="light"]) .only-dark{display:block}}
 :root[data-theme="dark"]{
-  --bg:#0e171d; --surface:#15222b; --ink:#e7edf0; --fg:#dbe3e7; --muted:#9aabb5;
-  --line:#26363f; --accent:#d4a159; --accent-ink:#17110a; --band:#0a1217; --band-fg:#e7edf0; --band-muted:#8fa2ad;
-  --hero-1:#16303f; --hero-2:#081118; color-scheme:dark}
+  --bg:#101010; --surface:#191918; --ink:#f2eee6; --fg:#e2ded6; --muted:#a39e94;
+  --line:#2c2b28; --accent:#d1a24a; --accent-text:#d9ae5c; --accent-ink:#141414; --band:#0a0a0a; --band-fg:#f2eee6; --band-muted:#9c978d;
+  --hero-1:#24211d; --hero-2:#080808; color-scheme:dark}
+.only-dark{display:none}
+:root[data-theme="dark"] .only-light{display:none}
+:root[data-theme="dark"] .only-dark{display:block}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -42,7 +51,8 @@ h2{font-size:clamp(2rem,4vw,2.9rem)}
 h3{font-size:1.6rem}
 p{margin:0}
 .wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-text)}
+.band .eyebrow{color:var(--accent)}
 .section{padding-block:88px}
 .section-head{display:grid;gap:14px;max-width:62ch;margin-bottom:44px}
 .section-head p{color:var(--muted)}
@@ -57,9 +67,12 @@ a:focus-visible,.btn:focus-visible,summary:focus-visible,input:focus-visible,tex
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
 .site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--surface);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
-.brand{display:flex;flex-direction:column;text-decoration:none;line-height:1.1}
-.brand b{font-family:var(--display);font-weight:400;font-size:1.45rem;color:var(--ink)}
-.brand span{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;line-height:1.1}
+.brand img{height:46px;width:auto}
+.brand-text{display:flex;flex-direction:column}
+.brand-text b{font-family:var(--display);font-weight:400;font-size:1.3rem;color:var(--ink)}
+.brand-text span{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:440px){.brand-text{display:none}}
 .nav-links{display:flex;align-items:center;gap:26px;list-style:none;margin:0;padding:0;font-size:.92rem;font-weight:500}
 .nav-links a{text-decoration:none}
 .nav-links a:hover{color:var(--accent)}
@@ -135,15 +148,17 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (max-width:480px){.why{grid-template-columns:1fr}}
 
 /* About + video */
-.about{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.about{display:grid;grid-template-columns:minmax(0,440px) 1fr;gap:72px;align-items:center}
+.headshot{margin:0;position:relative;max-width:100%}
+.headshot img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;box-shadow:18px 18px 0 -1px var(--bg),18px 18px 0 0 var(--accent)}
+.headshot figcaption{position:absolute;left:0;bottom:0;background:var(--band);color:var(--band-fg);padding:10px 16px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
 .about-body{display:grid;gap:18px;min-width:0}
 .about-body p{color:var(--muted)}
-.video{display:grid;place-items:center;aspect-ratio:16/9;max-width:100%;background:linear-gradient(150deg,var(--hero-1),var(--hero-2));background-size:cover;background-position:center;color:#fff;text-decoration:none;position:relative}
-.video .play{display:grid;place-items:center;width:78px;height:78px;border-radius:50%;background:var(--accent);color:var(--accent-ink);transition:transform .2s}
-.video:hover .play{transform:scale(1.06)}
-.video small{position:absolute;bottom:14px;left:16px;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
+.about-actions{display:flex;flex-wrap:wrap;gap:12px}
+.about-actions .btn-ghost{color:var(--ink)}
+.about-actions .btn-ghost:hover{background:transparent;color:var(--accent-text)}
 .quote{font-family:var(--display);font-size:1.35rem;color:var(--ink);border-left:2px solid var(--accent);padding-left:18px}
-@media (max-width:860px){.about{grid-template-columns:1fr}}
+@media (max-width:860px){.about{grid-template-columns:1fr;gap:48px}.headshot{max-width:420px;margin-right:18px}}
 
 /* Reviews */
 .rv-layout{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start}
@@ -221,14 +236,21 @@ textarea{min-height:130px;resize:vertical}
 
 /* Footer */
 footer{background:var(--band);color:var(--band-muted);border-top:1px solid rgba(255,255,255,.1);font-size:.88rem}
-footer .wrap{padding-block:32px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px}
+footer .wrap{padding-block:40px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px 32px}
+footer img{width:220px;height:auto}
+.foot-meta{display:grid;gap:6px;text-align:right}
+@media (max-width:600px){.foot-meta{text-align:left}}
 footer b{color:var(--band-fg);font-weight:600}
 </style>
 </head>
 <body>
 <header class="site-header">
   <div class="wrap nav">
-    <a class="brand" href="#top"><b>The Morales Group</b><span>Keller Williams Realty</span></a>
+    <a class="brand" href="#top" aria-label="The Morales Group, home">
+      <img class="only-light" src="images/mark.png" alt="" width="400" height="179">
+      <img class="only-dark" src="images/mark-dark.png" alt="" width="400" height="179">
+      <span class="brand-text"><b>The Morales Group</b><span>Keller Williams Realty</span></span>
+    </a>
     <ul class="nav-links">
       <li><a href="#sell">Sell</a></li>
       <li><a href="#buy">Buy</a></li>
@@ -261,7 +283,7 @@ footer b{color:var(--band-fg);font-weight:600}
 <section class="hero">
   <div class="hero-photo" style="background-image:url('https://images.unsplash.com/photo-1512699355324-f07e3106dae5?w=1800&q=80&auto=format&fit=crop')"></div>
   <div class="wrap">
-    <p class="eyebrow">South Jersey &amp; Philadelphia Realtors</p>
+    <p class="eyebrow">Trust · Experience · Results</p>
     <h1>Your trusted New Jersey &amp; Philadelphia real estate expert</h1>
     <p class="lede">Helping buyers, sellers, investors, and relocating families reach their real estate goals from Cherry Hill to Center City, with local market knowledge and personalized service.</p>
     <div class="hero-actions">
@@ -374,17 +396,20 @@ footer b{color:var(--band-fg);font-weight:600}
 
 <section class="section" style="padding-top:0">
   <div class="wrap about">
+    <figure class="headshot">
+      <img src="images/raul-morales.jpg" alt="Raul Morales, REALTOR®, smiling in a dark blazer" width="900" height="1125" loading="lazy">
+      <figcaption>Raul Morales · REALTOR®</figcaption>
+    </figure>
     <div class="about-body">
       <p class="eyebrow">Meet your Realtor</p>
       <h2>Raul Morales, REALTOR®</h2>
       <p>The Morales Group, led by Raul Morales, guides clients through buying, selling, and investing in homes across Pennsylvania and New Jersey. Expect personalized service, expert market insight, and strategies built around your goals.</p>
       <p class="quote">"The future depends on what you do today." <br><small style="font-family:var(--body);font-size:.85rem;color:var(--muted)">Mahatma Gandhi</small></p>
-      <a class="btn btn-primary" style="justify-self:start" href="https://cal.com/themoralesgroup/intromeeting" target="_blank" rel="noopener">Schedule a consultation</a>
+      <div class="about-actions">
+        <a class="btn btn-primary" href="https://cal.com/themoralesgroup/intromeeting" target="_blank" rel="noopener">Schedule a consultation</a>
+        <a class="btn btn-ghost" href="https://www.youtube.com/watch?v=fZumsf98IpI" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Watch my video</a>
+      </div>
     </div>
-    <a class="video" href="https://www.youtube.com/watch?v=fZumsf98IpI" target="_blank" rel="noopener" style="background-image:url('https://img.youtube.com/vi/fZumsf98IpI/hqdefault.jpg')">
-      <span class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
-      <small>Watch on YouTube</small>
-    </a>
   </div>
 </section>
 
@@ -554,8 +579,12 @@ footer b{color:var(--band-fg);font-weight:600}
 
 <footer>
   <div class="wrap">
-    <span><b>The Morales Group</b> · Affiliated with Keller Williams Realty</span>
-    <span>© 2026 The Morales Group · Equal Housing Opportunity</span>
+    <img src="images/logo-dark.png" alt="The Morales Group, Real Estate Professionals" width="900" height="548" loading="lazy">
+    <div class="foot-meta">
+      <span><b>The Morales Group</b> · Affiliated with Keller Williams Realty</span>
+      <span>RaulMorales@KW.com · (856) 264-0332</span>
+      <span>© 2026 The Morales Group · Equal Housing Opportunity</span>
+    </div>
   </div>
 </footer>
 
