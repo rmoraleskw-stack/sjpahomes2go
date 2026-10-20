@@ -146,14 +146,46 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (max-width:860px){.about{grid-template-columns:1fr}}
 
 /* Reviews */
-.reviews{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
-.review{background:var(--surface);border:1px solid var(--line);padding:28px;display:grid;gap:16px;align-content:space-between}
+.rv-layout{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start}
+.rv-summary{display:grid;gap:18px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px)}
+.rv-score{display:flex;align-items:baseline;gap:12px}
+.rv-score b{font-family:var(--display);font-weight:400;font-size:4rem;line-height:1;color:var(--band-fg)}
+.rv-score span{color:var(--band-muted);font-size:.9rem}
 .stars{color:var(--accent);letter-spacing:3px;font-size:1rem}
-.review p{font-size:.97rem}
-.review cite{font-style:normal;font-weight:600;font-size:.9rem}
-.review.feature{grid-column:span 2}
-.review.feature p{font-family:var(--display);font-size:1.3rem;line-height:1.45;color:var(--ink)}
-@media (max-width:720px){.review.feature{grid-column:auto}.reviews{grid-template-columns:1fr}}
+.rv-cats{display:grid;gap:10px;font-size:.88rem;color:var(--band-muted)}
+.rv-cats div{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center}
+.rv-cats i{grid-column:1/-1;height:3px;background:var(--accent)}
+.rv-cats em{font-style:normal;color:var(--band-fg);font-variant-numeric:tabular-nums}
+.rv-summary .btn{justify-self:start}
+.rv-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.rv-filters button,.keytag{font:600 .78rem var(--body);letter-spacing:.04em;cursor:pointer;color:var(--band-fg);background:transparent}
+.rv-filters button{padding:9px 14px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-variant-numeric:tabular-nums}
+.rv-filters button:hover{border-color:var(--accent)}
+.rv-filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.rv-filters button:focus-visible,.keytag:focus-visible,.rv-more:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.rv-status{color:var(--band-muted);font-size:.88rem;margin:-10px 0 20px;min-height:1.4em}
+.rv-status button{font:inherit;color:var(--accent);background:none;border:0;cursor:pointer;text-decoration:underline;padding:0}
+.reviews{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.review{margin:0;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);padding:24px;display:grid;gap:14px;align-content:start;transition:border-color .2s,transform .2s}
+.review:hover{border-color:rgba(255,255,255,.3)}
+@media (prefers-reduced-motion:no-preference){.review:hover{transform:translateY(-2px)}}
+.rv-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.8rem;color:var(--band-muted)}
+.review h3{font-family:var(--body);font-weight:600;font-size:1.02rem;color:var(--band-fg);line-height:1.35}
+.rv-text{font-size:.95rem;color:var(--band-fg);opacity:.9;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden}
+.review.open .rv-text{-webkit-line-clamp:unset;display:block}
+.rv-more{justify-self:start;font:600 .82rem var(--body);color:var(--accent);background:none;border:0;padding:0;cursor:pointer}
+.rv-prop{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.84rem;color:var(--band-muted);font-variant-numeric:tabular-nums;border-top:1px dashed rgba(255,255,255,.16);padding-top:12px}
+.rv-prop b{color:var(--band-fg);font-weight:600}
+.rv-foot{display:grid;gap:12px}
+.review cite{font-style:normal;font-weight:600;font-size:.9rem;color:var(--band-fg)}
+.review cite small{font-weight:400;color:var(--band-muted)}
+.keytags{display:flex;flex-wrap:wrap;gap:8px}
+.keytag{position:relative;padding:6px 12px 6px 24px;border:0;background:rgba(226,184,120,.16);color:var(--band-fg);clip-path:polygon(10px 0,100% 0,100% 100%,10px 100%,0 50%);transition:background .2s}
+.keytag::before{content:"";position:absolute;left:9px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--band)}
+.keytag:hover,.keytag.on{background:var(--accent);color:var(--accent-ink)}
+.review[hidden]{display:none}
+@media (max-width:900px){.rv-layout{grid-template-columns:1fr;gap:32px}.rv-summary{position:static}}
+@media (max-width:420px){.reviews{grid-template-columns:1fr}}
 
 /* Living */
 .living{display:grid;grid-template-columns:1fr 1.4fr;gap:56px}
@@ -362,16 +394,81 @@ footer b{color:var(--band-fg);font-weight:600}
       <p class="eyebrow">Client reviews</p>
       <h2>What clients say about working with Raul</h2>
     </div>
-    <div class="reviews">
-      <figure class="review feature" style="margin:0;background:transparent;border-color:rgba(255,255,255,.15)">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p style="color:var(--band-fg)">"From the very beginning, he listened closely to what we were looking for and never stopped working to make sure we found the perfect fit. We had some picky preferences (historic home with charm in a walkable town). Thanks to Raul's hard work and guidance, we found our dream home, something we didn't think was possible until he made it happen."</p>
-        <cite style="color:var(--band-fg)">Marie Malony</cite>
-      </figure>
-      <figure class="review" style="margin:0"><div class="stars" aria-label="5 stars">★★★★★</div><p>"He was patient, responsive, and always made himself available when I wanted to see a property. He made the entire process feel comfortable and never pressured me. Thanks to Raul, I found a home that I'm truly happy with."</p><cite>Evelyn Rivera</cite></figure>
-      <figure class="review" style="margin:0"><div class="stars" aria-label="5 stars">★★★★★</div><p>"Not only is he knowledgeable and pleasant, but he looks out for your best interest in every single part of the process. I felt as if I was working with one of my close friends, or dare I say, family."</p><cite>Art Mikhelson</cite></figure>
-      <figure class="review" style="margin:0"><div class="stars" aria-label="5 stars">★★★★★</div><p>"He stayed on top of every listing and negotiated a great deal for us once we found the home we wanted, and he helped us beat out other buyers to obtain our first home!"</p><cite>Sergio Morales</cite></figure>
-      <figure class="review" style="margin:0"><div class="stars" aria-label="5 stars">★★★★★</div><p>"Raul Morales will make sure to walk you through the home buying process with his knowledge of real estate and with extreme patience. He always returned my phone calls in a timely manner."</p><cite>Korpo Brown</cite></figure>
+    <div class="rv-layout">
+      <aside class="rv-summary">
+        <div class="rv-score"><b>5.0</b><span><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><br>7 reviews, all 5 stars</span></div>
+        <div class="rv-cats" aria-label="Category ratings on Zillow">
+          <div>Local knowledge<em>5.0</em><i></i></div>
+          <div>Process expertise<em>5.0</em><i></i></div>
+          <div>Responsiveness<em>5.0</em><i></i></div>
+          <div>Negotiation skills<em>5.0</em><i></i></div>
+        </div>
+        <a class="btn btn-ghost" href="https://www.zillow.com/profile/Raul%20A%20Morales%20" target="_blank" rel="noopener">See reviews on Zillow</a>
+      </aside>
+      <div>
+        <div class="rv-filters" role="group" aria-label="Filter reviews">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="buyer" aria-pressed="false">Buyers</button>
+          <button type="button" data-filter="seller" aria-pressed="false">Sellers</button>
+          <button type="button" data-filter="single-family" aria-pressed="false">Single family</button>
+          <button type="button" data-filter="condo" aria-pressed="false">Condo &amp; apartment</button>
+          <button type="button" data-filter="burlington-county" aria-pressed="false">Burlington County</button>
+        </div>
+        <p class="rv-status" id="rv-status" aria-live="polite"></p>
+        <div class="reviews" id="reviews-grid">
+          <figure class="review" data-tags="buyer condo mount-laurel burlington-county">
+            <div class="rv-top"><span class="stars" aria-label="5 stars">★★★★★</span><span>May 2026</span></div>
+            <h3>Bought a condo in Mount Laurel, NJ</h3>
+            <p class="rv-text">"Raul Morales was a pleasure to work with. He was patient, responsive, and always made himself available when I wanted to see a property. He made the entire process feel comfortable and never pressured me. Thanks to Raul, I found a home that I'm truly happy with. I highly recommend him."</p>
+            <div class="rv-foot"><cite>Evelyn Rivera <small>· Zillow</small></cite>
+              <div class="keytags"><button class="keytag" data-filter="buyer">Buyer</button><button class="keytag" data-filter="condo">Condo</button><button class="keytag" data-filter="mount-laurel">Mount Laurel</button></div></div>
+          </figure>
+          <figure class="review" data-tags="buyer single-family burlington burlington-county">
+            <div class="rv-top"><span class="stars" aria-label="5 stars">★★★★★</span><span>Nov 2025</span></div>
+            <h3>Bought a single-family home in Burlington, NJ</h3>
+            <p class="rv-text">"Working with Raul was truly an exceptional experience. From the very beginning, he listened closely to what we were looking for and never stopped working to make sure we found the perfect fit. And we had some picky preferences (historic home with charm in a walkable town). His deep knowledge of the market, quick communication, and genuine dedication made the entire process smooth, stress-free, and even exciting. Thanks to Raul's hard work and guidance, we were able to find our dream home, something we didn't think was possible until he made it happen. He went above and beyond in every step, from scheduling showings to explaining details clearly to advocating for us during negotiations. It always felt like he had our best interests at heart. We can't thank Raul enough for helping us reach this huge milestone. If you're searching for a realtor who is professional, trustworthy, and truly committed to your success, Raul is the one."</p>
+            <div class="rv-foot"><cite>Marie Malony <small>· Zillow</small></cite>
+              <div class="keytags"><button class="keytag" data-filter="buyer">Buyer</button><button class="keytag" data-filter="single-family">Single family</button><button class="keytag" data-filter="burlington">Burlington</button></div></div>
+          </figure>
+          <figure class="review" data-tags="buyer single-family burlington-county">
+            <div class="rv-top"><span class="stars" aria-label="5 stars">★★★★★</span><span>About a year ago</span></div>
+            <h3>Best agent we could have asked for!</h3>
+            <p class="rv-text">"Raul Morales was an incredible help to our family during our home search. He truly listened to what we needed and understood the urgency of our situation. Rain or snow, Raul was out there with us, showing homes and guiding us every step of the way. He was patient, knowledgeable, and always had our best interest in mind. His dedication and strong negotiation skills helped us find the perfect home in less than a month and stay within our budget. We're beyond grateful for his hard work and highly recommend Raul to anyone looking for a reliable, caring real estate agent."</p>
+            <div class="rv-prop"><b>$639,785</b><span>5 bd · 4 ba · 6-car</span><span>Burlington County</span></div>
+            <div class="rv-foot"><cite>Zainub <small>· Verified review</small></cite>
+              <div class="keytags"><button class="keytag" data-filter="buyer">Buyer</button><button class="keytag" data-filter="single-family">Single family</button><button class="keytag" data-filter="burlington-county">Burlington County</button></div></div>
+          </figure>
+          <figure class="review" data-tags="buyer condo delran burlington-county">
+            <div class="rv-top"><span class="stars" aria-label="5 stars">★★★★★</span><span>About a year ago</span></div>
+            <h3>Very professional</h3>
+            <p class="rv-text">"Bought condo last month. Raul helped us a lot and everything was very smooth. Thank you."</p>
+            <div class="rv-prop"><b>$203,500</b><span>2 bd · 1 ba</span><span>Delran Township</span></div>
+            <div class="rv-foot"><cite>Verified buyer <small>· Verified review</small></cite>
+              <div class="keytags"><button class="keytag" data-filter="buyer">Buyer</button><button class="keytag" data-filter="condo">Condo</button><button class="keytag" data-filter="delran">Delran</button></div></div>
+          </figure>
+          <figure class="review" data-tags="buyer single-family lumberton burlington-county">
+            <div class="rv-top"><span class="stars" aria-label="5 stars">★★★★★</span><span>Jun 2025</span></div>
+            <h3>Bought a single-family home in Lumberton, NJ</h3>
+            <p class="rv-text">"Working with Raul was simply exceptional! Not only is he knowledgeable, pleasant, but he looks out for your best interest in every single part of the process... :-). I felt as if I was working with one of my close friends, or dare I say, family. This has been one of the best experiences I've had in a very long time, I will be coming back for our next one, and telling all my friends/relatives and coworkers regarding such a great experience! Thank you so much Raul!!!"</p>
+            <div class="rv-foot"><cite>Art Mikhelson <small>· Zillow</small></cite>
+              <div class="keytags"><button class="keytag" data-filter="buyer">Buyer</button><button class="keytag" data-filter="single-family">Single family</button><button class="keytag" data-filter="lumberton">Lumberton</button></div></div>
+          </figure>
+          <figure class="review" data-tags="buyer seller condo hamilton">
+            <div class="rv-top"><span class="stars" aria-label="5 stars">★★★★★</span><span>Apr 2024</span></div>
+            <h3>Bought and sold an apartment in Hamilton, NJ</h3>
+            <p class="rv-text">"If you're looking for the best Realtor in New Jersey, look no further, Raul Morales will make sure to walk you through the home buying process with his knowledge of real estate and with extreme patience. He always returned my phone calls in a timely manner. Lastly, his experience in real estate allowed us to purchase a home. If you're reading this don't hesitate to reach out to Raul Morales, THE BEST REALTOR IN NJ!!!"</p>
+            <div class="rv-foot"><cite>Korpo Brown <small>· Zillow</small></cite>
+              <div class="keytags"><button class="keytag" data-filter="buyer">Buyer</button><button class="keytag" data-filter="seller">Seller</button><button class="keytag" data-filter="condo">Apartment</button><button class="keytag" data-filter="hamilton">Hamilton</button></div></div>
+          </figure>
+          <figure class="review" data-tags="buyer seller single-family mount-laurel burlington-county">
+            <div class="rv-top"><span class="stars" aria-label="5 stars">★★★★★</span><span>Jul 2022</span></div>
+            <h3>Bought and sold a single-family home in Mount Laurel, NJ</h3>
+            <p class="rv-text">"We had a great experience. Raul was very professional and knowledgeable. After a year of searching before we found him, we had a hard time. He stayed on top of every listing and negotiated a great deal for us once we found the home we wanted, and he helped us beat out other buyers to obtain our first home! Would recommend him for anyone buying or selling. If we ever need him again we will absolutely go right to him."</p>
+            <div class="rv-foot"><cite>Sergio Morales <small>· Zillow</small></cite>
+              <div class="keytags"><button class="keytag" data-filter="buyer">Buyer</button><button class="keytag" data-filter="seller">Seller</button><button class="keytag" data-filter="single-family">Single family</button><button class="keytag" data-filter="mount-laurel">Mount Laurel</button></div></div>
+          </figure>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -469,6 +566,76 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
     document.getElementById('form-note').textContent = 'This form isn’t connected yet. Please email RaulMorales@KW.com or call (856) 264-0332.';
   }
 });
+(function () {
+  var grid = document.getElementById('reviews-grid');
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.review'));
+  var bar = document.querySelectorAll('.rv-filters button');
+  var status = document.getElementById('rv-status');
+  var labels = {};
+  document.querySelectorAll('[data-filter]').forEach(function (el) {
+    if (!labels[el.dataset.filter]) labels[el.dataset.filter] = el.textContent;
+  });
+  labels.condo = 'Condo & apartment';
+
+  bar.forEach(function (b) {
+    var f = b.dataset.filter;
+    var n = f === 'all' ? cards.length : cards.filter(function (c) { return c.dataset.tags.split(' ').indexOf(f) !== -1; }).length;
+    b.textContent += ' (' + n + ')';
+  });
+
+  function apply(f) {
+    var shown = 0;
+    cards.forEach(function (c) {
+      var hit = f === 'all' || c.dataset.tags.split(' ').indexOf(f) !== -1;
+      c.hidden = !hit;
+      if (hit) shown++;
+    });
+    bar.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.filter === f)); });
+    document.querySelectorAll('.keytag').forEach(function (t) { t.classList.toggle('on', t.dataset.filter === f); });
+    status.textContent = '';
+    if (f !== 'all') {
+      status.appendChild(document.createTextNode('Showing ' + shown + ' review' + (shown === 1 ? '' : 's') + ' tagged “' + labels[f] + '” · '));
+      var clear = document.createElement('button');
+      clear.type = 'button';
+      clear.textContent = 'Show all';
+      clear.addEventListener('click', function () { apply('all'); });
+      status.appendChild(clear);
+    }
+    markLong();
+  }
+
+  document.querySelectorAll('.rv-filters button, .keytag').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var f = el.dataset.filter;
+      var current = document.querySelector('.rv-filters [aria-pressed="true"]');
+      var active = current ? current.dataset.filter : null;
+      if (el.classList.contains('keytag') && el.classList.contains('on')) f = 'all';
+      apply(f === active && f !== 'all' && !el.classList.contains('keytag') ? 'all' : f);
+    });
+  });
+
+  function markLong() {
+    cards.forEach(function (c) {
+      if (c.hidden || c.querySelector('.rv-more')) return;
+      var t = c.querySelector('.rv-text');
+      if (t.scrollHeight > t.clientHeight + 2) {
+        var more = document.createElement('button');
+        more.type = 'button';
+        more.className = 'rv-more';
+        more.textContent = 'Read more';
+        more.setAttribute('aria-expanded', 'false');
+        more.addEventListener('click', function () {
+          var open = c.classList.toggle('open');
+          more.textContent = open ? 'Show less' : 'Read more';
+          more.setAttribute('aria-expanded', String(open));
+        });
+        t.after(more);
+      }
+    });
+  }
+  markLong();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(markLong);
+})();
 document.querySelectorAll('.menu a').forEach(function (a) {
   a.addEventListener('click', function () { a.closest('details').open = false; });
 });
