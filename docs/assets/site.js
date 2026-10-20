@@ -27,6 +27,51 @@
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
   var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---- Analytics, only after the visitor accepts ---------------------------
+     Google's script is not requested and no cookies are set until Accept. */
+  var CONSENT_KEY = "tmg-cookies";
+  var gaMeta = $('meta[name="ga-id"]');
+  var gaId = gaMeta ? gaMeta.getAttribute("content") : "";
+  var store = {
+    get: function () { try { return window.localStorage.getItem(CONSENT_KEY); } catch (e) { return null; } },
+    set: function (v) { try { window.localStorage.setItem(CONSENT_KEY, v); } catch (e) {} }
+  };
+  function loadAnalytics() {
+    if (!gaId || window.__gaLoaded) return;
+    window.__gaLoaded = true;
+    window["ga-disable-" + gaId] = false;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("consent", "default", { analytics_storage: "granted", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" });
+    window.gtag("js", new Date());
+    window.gtag("config", gaId);
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + gaId;
+    document.head.appendChild(s);
+  }
+  function stopAnalytics() {
+    if (gaId) window["ga-disable-" + gaId] = true;
+    // Remove any Google Analytics cookies set by an earlier Accept.
+    var host = location.hostname.split("."), domains = [""];
+    for (var i = 0; i < host.length - 1; i++) domains.push("; domain=." + host.slice(i).join("."));
+    document.cookie.split(";").forEach(function (c) {
+      var name = c.split("=")[0].trim();
+      if (/^_ga/.test(name)) domains.forEach(function (d) { document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/" + d; });
+    });
+  }
+  var banner = $("#cookie");
+  var choice = store.get();
+  if (choice === "yes") loadAnalytics();
+  else if (choice !== "no" && banner && gaId) banner.hidden = false;
+  if (banner) {
+    $("#cookie-yes").addEventListener("click", function () { store.set("yes"); banner.hidden = true; loadAnalytics(); });
+    $("#cookie-no").addEventListener("click", function () { store.set("no"); banner.hidden = true; stopAnalytics(); });
+    $$("[data-cookie-open]").forEach(function (a) {
+      a.addEventListener("click", function (e) { e.preventDefault(); banner.hidden = false; $("#cookie-yes").focus(); });
+    });
+  }
+
   /* ---- Mobile menu closes after a pick ------------------------------------ */
   $$(".menu a").forEach(function (a) {
     a.addEventListener("click", function () { a.closest("details").open = false; });

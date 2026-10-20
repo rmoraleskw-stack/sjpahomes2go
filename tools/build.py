@@ -20,15 +20,7 @@ HEAD = """<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={ga}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){{dataLayer.push(arguments);}}
-  gtag('js', new Date());
-
-  gtag('config', '{ga}');
-</script>
+<meta name="ga-id" content="{ga}">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
 <meta name="description" content="{description}">
@@ -82,10 +74,17 @@ FOOTER = """</main>
     <div class="foot-meta">
       <span><b>The Morales Group</b> · Affiliated with Keller Williams Realty</span>
       <span>RaulMorales@KW.com · (856) 264-0332</span>
-      <span>© <span data-year>{year}</span> The Morales Group · Equal Housing Opportunity · <a href="{root}privacy/">Privacy</a></span>
+      <span>© <span data-year>{year}</span> The Morales Group · Equal Housing Opportunity · <a href="{root}privacy/">Privacy</a> · <a href="{root}privacy/#cookies" data-cookie-open>Cookie choices</a></span>
     </div>
   </div>
 </footer>
+<div class="cookie" id="cookie" role="region" aria-label="Cookie choices" hidden>
+  <p>We'd like to use Google Analytics cookies to see how visitors use this site. Nothing is collected unless you accept. <a href="{root}privacy/#cookies">Learn more</a></p>
+  <div class="cookie-actions">
+    <button type="button" class="btn btn-ghost" id="cookie-no">Decline</button>
+    <button type="button" class="btn btn-primary" id="cookie-yes">Accept</button>
+  </div>
+</div>
 <script src="{root}assets/site.js" defer></script>
 </body>
 </html>

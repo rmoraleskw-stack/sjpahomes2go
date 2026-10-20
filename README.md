@@ -12,7 +12,7 @@ After editing anything in `src/pages/`, run `python3 tools/build.py` and commit 
 
 ## Settings in `docs/assets/site.js`
 - `formspreeId`: paste a free Formspree form ID to have the contact form email you directly. While it is empty, the form opens the visitor's email app with the message filled in.
-- Google Analytics ID (`G-WDJJZKH1QP`) is set as `GA_ID` in `tools/build.py`; it goes into every page on build.
+- Google Analytics ID (`G-WDJJZKH1QP`) is set as `GA_ID` in `tools/build.py`. Pages carry it in a `ga-id` meta tag, and `site.js` loads Google's script only after a visitor clicks Accept in the cookie banner (the choice is saved in the browser under `tmg-cookies`).
 - `COUNTIES`: average property tax rates used by the calculators and the map. They are approximate county averages; check them yearly.
 
 ## Launch checklist
