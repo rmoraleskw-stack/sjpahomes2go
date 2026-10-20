@@ -11,6 +11,7 @@ import datetime, html, json, pathlib, re
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC, OUT = ROOT / "src" / "pages", ROOT / "docs"
 SITE = "https://sjpahomes2go.com/"
+GA_ID = "G-WDJJZKH1QP"  # Google Analytics 4 measurement ID
 
 NAV = [("Sell", "#sell"), ("Buy", "#buy"), ("Invest", "#invest"), ("Areas", "#areas"),
        ("Calculators", "#payment"), ("Reviews", "#reviews"), ("FAQ", "#faq"), ("Contact", "#contact")]
@@ -19,6 +20,15 @@ HEAD = """<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={ga}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+
+  gtag('config', '{ga}');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
 <meta name="description" content="{description}">
@@ -124,7 +134,7 @@ def build():
         links = "\n".join('      <li><a href="%s%s">%s</a></li>' % (root, href, label) for label, href in NAV)
         body = body.replace("{{include:coverage-map.svg}}", svg)
         page = (HEAD.format(title=html.escape(meta["title"]), description=html.escape(meta["description"]),
-                            url=SITE + ("" if path == "404" else path), site=SITE, root=root, jsonld=jsonld,
+                            url=SITE + ("" if path == "404" else path), site=SITE, ga=GA_ID, root=root, jsonld=jsonld,
                             robots='<meta name="robots" content="noindex">\n' if meta.get("noindex") else "")
                 + HEADER.format(root=root, links=links) + body + FOOTER.format(root=root, year=year))
         page = page.replace("{{root}}", root)
