@@ -15,11 +15,14 @@ After editing anything in `src/pages/`, run `python3 tools/build.py` and commit 
 - Google Analytics ID (`G-WDJJZKH1QP`) is set as `GA_ID` in `tools/build.py`. Pages carry it in a `ga-id` meta tag, and `site.js` loads Google's script only after a visitor clicks Accept in the cookie banner (the choice is saved in the browser under `tmg-cookies`).
 - `COUNTIES`: average property tax rates used by the calculators and the map. They are approximate county averages; check them yearly.
 
+## Updating listings
+Active listings live in the `#listings` section of `src/pages/index.html`, one `<article class="listing">` per home. Photos go in `docs/images/listings/`. When a home goes pending or sells, change or remove its card, and update its pin in `tools/mkmap.py` (kind `listing`) before rebuilding the map. An open-house notice hides itself after its `data-until` time.
+
 ## Launch checklist
 - [x] Logo and headshot
 - [x] GitHub Pages from `main` / `/docs`
 - [x] Namecheap DNS: four A records for `@` and CNAME `www` → `rmoraleskw-stack.github.io`
 - [ ] Enforce HTTPS in Pages settings
 - [ ] Formspree form ID (optional; the email fallback already works)
-- [ ] Brokerage office address and phone (NJ advertising rules)
+- [x] Brokerage name, office address and NJ license number (office phone still to add)
 - [ ] Replace stock photos with your own

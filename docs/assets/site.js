@@ -19,7 +19,8 @@
     burlington:   { name: "Burlington County, NJ",   tax: 2.65 },
     gloucester:   { name: "Gloucester County, NJ",   tax: 3.00 },
     mercer:       { name: "Mercer County, NJ",       tax: 2.60 },
-    philadelphia: { name: "Philadelphia County, PA", tax: 1.00 }
+    philadelphia: { name: "Philadelphia County, PA", tax: 1.00 },
+    delaware:     { name: "Delaware County, PA",     tax: 2.10 }
   };
   var NATIONAL_TAX = 1.1;
 
@@ -75,6 +76,23 @@
   /* ---- Mobile menu closes after a pick ------------------------------------ */
   $$(".menu a").forEach(function (a) {
     a.addEventListener("click", function () { a.closest("details").open = false; });
+  });
+
+  /* ---- Listings: hide open-house notices once they end ---------------------- */
+  $$("[data-until]").forEach(function (el) {
+    var end = Date.parse(el.getAttribute("data-until"));
+    if (!isNaN(end) && Date.now() > end) el.hidden = true;
+  });
+
+  /* ---- Listings: "Ask about this home" fills in the contact form ------------- */
+  $$("[data-ask]").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var msg = document.getElementById("f-msg"), topic = document.getElementById("f-topic");
+      if (topic) topic.value = "Buying";
+      if (msg) msg.value = "I'm interested in " + a.getAttribute("data-ask") + ". ";
+      var name = document.getElementById("f-name");
+      if (name) setTimeout(function () { name.focus({ preventScroll: true }); }, 600);
+    });
   });
 
   /* ---- Footer year -------------------------------------------------------- */

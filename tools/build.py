@@ -13,7 +13,7 @@ SRC, OUT = ROOT / "src" / "pages", ROOT / "docs"
 SITE = "https://sjpahomes2go.com/"
 GA_ID = "G-WDJJZKH1QP"  # Google Analytics 4 measurement ID
 
-NAV = [("Sell", "#sell"), ("Buy", "#buy"), ("Invest", "#invest"), ("Areas", "#areas"),
+NAV = [("Listings", "#listings"), ("Sell", "#sell"), ("Buy", "#buy"), ("Invest", "#invest"), ("Areas", "#areas"),
        ("Calculators", "#payment"), ("Reviews", "#reviews"), ("FAQ", "#faq"), ("Contact", "#contact")]
 
 HEAD = """<!doctype html>
@@ -72,7 +72,8 @@ FOOTER = """</main>
   <div class="wrap">
     <img src="{root}images/logo-dark.png" alt="The Morales Group, Real Estate Professionals" width="900" height="548" loading="lazy">
     <div class="foot-meta">
-      <span><b>The Morales Group</b> · Affiliated with Keller Williams Realty</span>
+      <span><b>The Morales Group</b> · Keller Williams Realty – Cherry Hill</span>
+      <span>409 Route 70 East, Cherry Hill, NJ 08003 · NJ License #2191021</span>
       <span>RaulMorales@KW.com · (856) 264-0332</span>
       <span>© <span data-year>{year}</span> The Morales Group · Equal Housing Opportunity · <a href="{root}privacy/">Privacy</a> · <a href="{root}privacy/#cookies" data-cookie-open>Cookie choices</a></span>
     </div>
@@ -95,9 +96,10 @@ AGENT = {
     "name": "The Morales Group", "url": SITE, "image": SITE + "images/logo.png",
     "telephone": "+1-856-264-0332", "email": "RaulMorales@KW.com",
     "employee": {"@type": "Person", "name": "Raul Morales", "jobTitle": "REALTOR®", "image": SITE + "images/raul-morales.jpg"},
-    "parentOrganization": {"@type": "Organization", "name": "Keller Williams Realty"},
+    "parentOrganization": {"@type": "Organization", "name": "Keller Williams Realty - Cherry Hill"},
+    "address": {"@type": "PostalAddress", "streetAddress": "409 Route 70 East", "addressLocality": "Cherry Hill", "addressRegion": "NJ", "postalCode": "08003", "addressCountry": "US"},
     "areaServed": [{"@type": "AdministrativeArea", "name": n} for n in
-                   ("Burlington County, NJ", "Camden County, NJ", "Gloucester County, NJ", "Mercer County, NJ", "Philadelphia County, PA")],
+                   ("Burlington County, NJ", "Camden County, NJ", "Gloucester County, NJ", "Mercer County, NJ", "Philadelphia County, PA", "Delaware County, PA")],
 }
 
 def text(s):
