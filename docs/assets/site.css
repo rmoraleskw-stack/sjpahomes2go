@@ -156,6 +156,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .listing-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:10px}
 .listing-actions .btn{padding:10px 16px;font-size:.88rem}
 .listing-actions .text-link{font-size:.88rem}
+.zillow-link{flex-basis:100%}
 .listing-broker{font-size:.72rem;color:var(--muted);letter-spacing:.02em;margin-top:6px}
 .lg-listing{background:#d1a24a;clip-path:polygon(50% 0,100% 45%,100% 100%,0 100%,0 45%)}
 .cm-listing{fill:#d1a24a;stroke:var(--band);stroke-width:2}
